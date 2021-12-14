@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package wg_manager_service;
+
+service WireguardManagerService {
+    rpc AddPeer(AddPeerRequest) returns (AddPeerResponse);
+
+    rpc RemovePeer(RemovePeerRequest) returns (RemovePeerResponse);
+}
+
+message AddPeerRequest {
+    string public_key = 1;
+
+    repeated string addresses = 2;
+}
+
+message AddPeerResponse {
+}
+
+message RemovePeerRequest {
+    string public_key = 1;
+}
+
+message RemovePeerResponse {
+}
