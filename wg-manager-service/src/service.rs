@@ -1,7 +1,7 @@
 use tonic::{Request, Response, Status};
 use wg_manager_service::wireguard_manager_service_server::WireguardManagerService;
 use wg_manager_service::{AddPeerRequest, AddPeerResponse, RemovePeerRequest, RemovePeerResponse};
-use wireguard_manager::WireguardManager;
+use wg_manager::WireguardManager;
 
 pub mod wg_manager_service {
     tonic::include_proto!("wg_manager_service");
@@ -22,8 +22,7 @@ impl WireguardManagerService for WireguardManagerServiceImpl {
     ) -> Result<Response<AddPeerResponse>, tonic::Status> {
         let request = request.into_inner();
 
-        // TODO: Switch do debug
-        info!(
+        debug!(
             "Adding peer: {}, with addresses: {:?}",
             request.public_key, request.addresses
         );
@@ -41,8 +40,7 @@ impl WireguardManagerService for WireguardManagerServiceImpl {
     ) -> Result<Response<RemovePeerResponse>, Status> {
         let request = request.into_inner();
 
-        // TODO: Switch to debug
-        info!(
+        debug!(
             "Removing peer: {}", request.public_key
         );
 
