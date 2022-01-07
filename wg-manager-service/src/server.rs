@@ -1,8 +1,8 @@
 use std::net::{IpAddr, SocketAddr};
 use tonic::transport::Server;
 
-use crate::service::wg_manager_service::wireguard_manager_service_server::WireguardManagerServiceServer;
 use crate::service::WireguardManagerServiceImpl;
+use wg_manager_service_common::wg_manager_service::wireguard_manager_service_server::WireguardManagerServiceServer;
 
 pub struct WireguardManagerServer {}
 

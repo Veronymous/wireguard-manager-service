@@ -1,1 +1,0 @@
-sshfs nbouma@nbouma-vm:/home/nbouma/mix-net/wireguard-manager-service/target /home/noah/mix-net/wireguard-manager-service/wg-manager-service/target -o nonempty

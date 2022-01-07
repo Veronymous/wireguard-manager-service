@@ -1,11 +1,9 @@
 use tonic::{Request, Response, Status};
-use wg_manager_service::wireguard_manager_service_server::WireguardManagerService;
-use wg_manager_service::{AddPeerRequest, AddPeerResponse, RemovePeerRequest, RemovePeerResponse};
 use wg_manager::WireguardManager;
-
-pub mod wg_manager_service {
-    tonic::include_proto!("wg_manager_service");
-}
+use wg_manager_service_common::wg_manager_service::wireguard_manager_service_server::WireguardManagerService;
+use wg_manager_service_common::wg_manager_service::{
+    AddPeerRequest, AddPeerResponse, RemovePeerRequest, RemovePeerResponse,
+};
 
 // Wireguard manager service implementation
 #[derive(Default)]
@@ -27,9 +25,9 @@ impl WireguardManagerService for WireguardManagerServiceImpl {
             request.public_key, request.addresses
         );
 
-        try_wg_function!(
-            self.wireguard_manager.add_peer(&request.public_key, &request.addresses)
-        );
+        try_wg_function!(self
+            .wireguard_manager
+            .add_peer(&request.public_key, &request.addresses));
 
         Ok(Response::new(AddPeerResponse {}))
     }
@@ -40,13 +38,9 @@ impl WireguardManagerService for WireguardManagerServiceImpl {
     ) -> Result<Response<RemovePeerResponse>, Status> {
         let request = request.into_inner();
 
-        debug!(
-            "Removing peer: {}", request.public_key
-        );
+        debug!("Removing peer: {}", request.public_key);
 
-        try_wg_function!(
-          self.wireguard_manager.remove_peer(&request.public_key)
-        );
+        try_wg_function!(self.wireguard_manager.remove_peer(&request.public_key));
 
         Ok(Response::new(RemovePeerResponse {}))
     }

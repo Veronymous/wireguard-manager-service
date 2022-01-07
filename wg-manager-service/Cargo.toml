@@ -1,5 +1,5 @@
 [package]
-name = "wg-manager-service"
+name = "wg_manager_service"
 version = "0.1.0"
 authors = ["boumba100 <noah.bouma@gmail.com>"]
 edition = "2018"
@@ -8,11 +8,9 @@ edition = "2018"
 config = "0.11.0"
 serde = { version = "1.0.130", features = ["derive"] }
 tonic = "0.6"
-prost = "0.9"
 tokio = { version = "1.13.0", features = ["macros", "rt-multi-thread"] }
 wg_manager = { path = "../wg-manager" }
+wg_manager_service_common = { path = "../wg-manager-service-common" }
+
 log = "0.4.14"
 env_logger = "0.9.0"
-
-[build-dependencies]
-tonic-build = "0.6"
