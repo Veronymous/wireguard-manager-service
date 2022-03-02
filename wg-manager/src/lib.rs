@@ -26,10 +26,7 @@ impl WireguardManager {
     }
 
     pub fn remove_peer(&self, public_key: &String) -> Result<(), WireguardManagerError> {
-        let command = format!(
-            "wg set wg0 peer {} remove",
-            public_key
-        );
+        let command = format!("wg set wg0 peer {} remove", public_key);
 
         Self::execute_command(&command)?;
 

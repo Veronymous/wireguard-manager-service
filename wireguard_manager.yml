@@ -4,3 +4,5 @@ port: 50061
 # TODO: Need id cert
 tls_cert: /home/noah/deployments/veronymous/dev/certs/wireguard-node-1/tutorial/server.pem
 tls_key: /home/noah/deployments/veronymous/dev/certs/wireguard-node-1/tutorial/server.key
+
+client_ca: /home/noah/deployments/veronymous/dev/certs/wireguard-node-1/tutorial/client/client_ca.pem

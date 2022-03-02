@@ -13,7 +13,9 @@ pub struct WireguardManagerConfig {
 
     pub tls_cert: Option<String>,
 
-    pub tls_key: Option<String>
+    pub tls_key: Option<String>,
+
+    pub client_ca: Option<String>,
 }
 
 impl WireguardManagerConfig {
