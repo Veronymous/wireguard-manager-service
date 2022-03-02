@@ -19,13 +19,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     info!("Loading wireguard manager service...");
 
-    let settings = WireguardManagerConfig::load().unwrap();
+    let config = WireguardManagerConfig::load().unwrap();
 
     info!("Starting server...");
-    info!("Using host: {}", settings.host);
-    info!("Using port: {}", settings.port);
+    info!("Using host: {}", config.host);
+    info!("Using port: {}", config.port);
 
-    WireguardManagerServer::start(settings.host, settings.port).await?;
+    WireguardManagerServer::start(&config).await?;
 
     Ok(())
 }

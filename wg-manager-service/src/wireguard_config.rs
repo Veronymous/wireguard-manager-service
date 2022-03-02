@@ -8,7 +8,12 @@ const WG_MANAGER_CONFIG_LOCATION: &str = "wireguard_manager.yml";
 #[derive(Clone, Debug, Deserialize)]
 pub struct WireguardManagerConfig {
     pub host: IpAddr,
+
     pub port: u16,
+
+    pub tls_cert: Option<String>,
+
+    pub tls_key: Option<String>
 }
 
 impl WireguardManagerConfig {
