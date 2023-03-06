@@ -7,7 +7,7 @@ edition = "2018"
 [dependencies]
 config = "0.11.0"
 serde = { version = "1.0.130", features = ["derive"] }
-tonic = {version = "0.6", features = ["tls"]}
+tonic = { version = "0.8.3", features = ["tls"] }
 tokio = { version = "1.13.0", features = ["macros", "rt-multi-thread"] }
 wg_manager = { path = "../wg-manager" }
 wg_manager_service_common = { path = "../wg-manager-service-common" }
